@@ -29,7 +29,7 @@ router.route('/contact')
         errorMessage: errors
       })
     }else{
-      res.render('thank', {title: "Thanks for the submission, We'll get back to you soon"})
+      res.render('thank', {title: req.body.name})
     }
 
   })
