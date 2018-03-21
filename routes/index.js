@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
+let nodemailer = require('nodemailer');
+let config = require('../config');
+let transporter = nodemailer.createTransport(config.mailer);
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Basic Site' });
@@ -29,10 +33,19 @@ router.route('/contact')
         errorMessage: errors
       })
     }else{
+      let mailOptions = {
+        from: 'BasicSite <no-reply basicsite@gmail.com>',
+        to: 'bloodprince027@gmail.com',
+        subject: 'You have got a new message from a visitor',
+        text: req.body.message
+      }
+      transporter.sendMail(mailOptions, (err, info)=>{
+        if(err){return console.log(err)}
+      
       res.render('thank', {title: req.body.name})
+      })
     }
-
-  })
+  });
 
 
 module.exports = router;
