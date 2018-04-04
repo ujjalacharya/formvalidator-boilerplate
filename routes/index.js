@@ -31,7 +31,7 @@ router.route('/contact')
         name: req.body.name,
         email: req.body.email,
         message: req.body.message,
-        errorMessage: errors
+        errorMessages: errors
       })
     } else {
       let mailOptions = {
@@ -48,12 +48,7 @@ router.route('/contact')
     }
   });
 
-  router.get('/register', (req, res)=>{
-    res.render('register', {title: 'Please register you information'})
-  })
-  router.get('/login', (req, res)=>{
-    res.render('login', {title: 'Please login'})
-  })
+
 
 
 module.exports = router;
