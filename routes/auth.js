@@ -4,9 +4,17 @@ var passport = require('passport');
 
 
 
-router.get('/login', (req, res, next) => {
-    res.render('login', { title: 'Please login' })
-})
+router.route('/login')
+    .get((req, res, next)=>{
+        res.render('login', { title: 'Please login' })
+    })
+    .post(passport.authenticate('local', {
+        failureRedirect: '/login'
+    }), (req, res)=>{
+        res.redirect('/');
+    }
+)
+
 
 router.route('/register')
     .get((req, res, next) => {

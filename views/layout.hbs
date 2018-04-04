@@ -33,14 +33,26 @@
             <a href="/contact">Contact</a>
           </li>
         </ul>
+        <ul class="nav navbar-nav navbar-right">
+          {{#if user}}
+        <li><a href="#">{{user.name}}</a></li>
+           {{else}}
+        <li>
+            <a href="/login">Login</a>
+          </li>
+          <li>
+            <a href="/register">Register</a>
+          </li>
+          {{/if}}
+        </ul>
       </div>
       <!--/.nav-collapse -->
     </div>
   </nav>
-    {{{body}}}
+  {{{body}}}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>
